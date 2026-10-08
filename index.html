@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow – Smart Task Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <main class="app-container">
+        <header class="app-header">
+          <div class="brand-wrap">
+            <div class="brand-icon" aria-hidden="true">✓</div>
+            <div>
+              <p class="eyebrow">Productivity Dashboard</p>
+              <h1>TaskFlow</h1>
+            </div>
+          </div>
+          <p class="subtitle">Organize your tasks. Stay productive.</p>
+        </header>
+
+        <section class="input-panel" aria-label="Add a new task">
+          <div class="input-grid">
+            <div class="field task-field">
+              <label for="taskInput">Task</label>
+              <input
+                id="taskInput"
+                type="text"
+                placeholder="Enter a task..."
+                aria-label="Task description"
+              />
+            </div>
+
+            <div class="field compact-field">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" aria-label="Task priority">
+                <option value="Low">Low</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div class="field compact-field">
+              <label for="taskDueDate">Due date</label>
+              <input id="taskDueDate" type="date" aria-label="Due date" />
+            </div>
+
+            <button id="addTaskBtn" type="button" class="primary-btn">Add Task</button>
+          </div>
+          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+        </section>
+
+        <section class="toolbar-panel" aria-label="Task filters and actions">
+          <div class="search-wrap">
+            <label class="sr-only" for="searchInput">Search tasks</label>
+            <input id="searchInput" type="search" placeholder="Search tasks..." aria-label="Search tasks" />
+          </div>
+
+          <div class="action-wrap">
+            <label class="sort-control" for="sortTasks">
+              <span>Sort by</span>
+              <select id="sortTasks" aria-label="Sort tasks">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="priority">Priority</option>
+                <option value="dueDate">Due date</option>
+              </select>
+            </label>
+            <button id="themeToggleBtn" type="button" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+          </div>
+        </section>
+
+        <section class="toolbar-panel secondary-toolbar" aria-label="Task filters and actions">
+          <div class="filter-group" role="tablist" aria-label="Filter tasks">
+            <button type="button" class="filter-btn active" data-filter="all">All</button>
+            <button type="button" class="filter-btn" data-filter="pending">Pending</button>
+            <button type="button" class="filter-btn" data-filter="completed">Completed</button>
+          </div>
+          <button id="clearCompletedBtn" type="button" class="secondary-btn">Clear completed</button>
+        </section>
+
+        <section class="stats-panel" aria-label="Task statistics">
+          <div class="stat-card total-card">
+            <span class="stat-label">Total</span>
+            <strong id="totalTasks">0</strong>
+          </div>
+          <div class="stat-card completed-card">
+            <span class="stat-label">Completed</span>
+            <strong id="completedTasks">0</strong>
+          </div>
+          <div class="stat-card pending-card">
+            <span class="stat-label">Pending</span>
+            <strong id="pendingTasks">0</strong>
+          </div>
+          <div class="stat-card high-card">
+            <span class="stat-label">High Priority</span>
+            <strong id="highPriorityTasks">0</strong>
+          </div>
+        </section>
+
+        <section class="task-panel" aria-label="Task list">
+          <div id="emptyMessage" class="empty-state" aria-live="polite">
+            <div class="empty-icon" aria-hidden="true">✦</div>
+            <h2>No tasks yet!</h2>
+            <p>Add a task above to get started.</p>
+          </div>
+          <ul id="taskList" class="task-list" aria-live="polite"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
